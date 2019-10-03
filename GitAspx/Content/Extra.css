@@ -1,0 +1,122 @@
+﻿
+h5 { 
+	margin:0;
+	font-size:12px;
+	color: #000; 
+	display:block;
+	width:auto;
+	background-color:#eae4bd;
+	padding:3px;
+	position:relative;
+	z-index:100;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-moz-border-radius-bottomright:0;
+	-webkit-border-bottom-right-radius:0;
+	border-bottom-right-radius:0;
+}
+
+ul#directories { 
+	padding:0; 
+	margin:0; 
+	list-style-type:none;
+}
+
+ul#directories li {
+	display:block;	
+	margin-left:15px;
+}
+
+ul#directories li a {
+	font-size:13px;
+	color:#000;
+	height:15px;
+	width:auto;
+	padding:5px 5px 5px 20px;
+	margin:5px 0 5px 5px;
+	text-decoration:none;
+	display:block;	
+	overflow:hidden;
+	background:#cbd6de url(images/bullet.png) no-repeat 0 40%;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+ul#directories li a:hover {
+	background-color:#fff;
+}
+
+ul#files { 
+	padding:0; 
+	margin:0; 
+	list-style-type:none;
+}
+
+ul#files li {
+	display:block;	
+	margin-left:15px;
+}
+
+ul#files li a {
+	font-size:13px;
+	color:#000;
+	height:15px;
+	width:auto;
+	padding:5px 5px 5px 20px;
+	margin:5px 0 5px 5px;
+	text-decoration:none;
+	display:block;	
+	overflow:hidden;
+	background:#cbd6de url(images/bullet.png) no-repeat 0 40%;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+ul#files li a:hover {
+	background-color:#fff;
+}
+
+tr#backpath td a {
+	font-size:13px;
+	color:#000;
+	height:15px;
+	width:auto;
+	padding:5px 5px 5px 20px;
+	margin:5px 0 5px 5px;
+	text-decoration:none;
+	display:block;	
+	overflow:hidden;
+	background:#cbd6de url(images/arrow.png) no-repeat 0 40%;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+tr#backpath td a:hover {
+	background-color:#fff;
+}
+
+.ulnopin
+{
+	list-style-type:none;
+}
+
+.genericBackground {
+	color: #000; 
+	padding:8px 8px 8px 8px;
+	background-color:#fff;
+	max-width:50%;
+	display: block;   margin-left: auto;   margin-right: auto;
+	border-radius: 5px;
+}
+
+.prettyprint
+{
+    color: #000; 
+	padding:8px 8px 8px 8px;
+	background-color:#fff;
+	border-radius: 5px;
+}

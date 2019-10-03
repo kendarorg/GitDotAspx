@@ -1,0 +1,114 @@
+﻿@model GitAspx.ViewModels.LevelViewModel
+@using GitAspx;
+@{
+    ViewBag.Title = "Repository " + Model.Project + " " + string.Join("/", Model.BreadCrumb).Replace("\\", "/");
+}
+<div class="repositoryContainer">
+    <h1>@Model.Project</h1>
+    <div class="clear">
+    </div>
+    <table border="0">
+        <tr id="backpath">
+            <td>
+                <a href="/">Root\</a>
+            </td>
+            @if (Model.BreadCrumb.Count > 0)
+            {
+                <td>
+                    <a class="openproject" href="javascript:void(0)" title="@Model.Project">@Model.Project\</a>
+                </td>
+            }
+            @for (int i = 0; i < Model.BreadCrumb.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(Model.BreadCrumb[i]))
+                {
+                <td>
+                    <a class="opendir"  href="javascript:void(0)" title="@Model.BreadCrumb[i]">@Path.GetFileName(Model.BreadCrumb[i])\</a>
+                </td>
+                }
+            }
+        </tr>
+    </table>
+    @if (Model.TextFile != null)
+    {
+        <a class="genericBackground" alt="@Model.FileName" href="@Model.FileName">Download
+            as binary file</a><br />
+        <pre class="prettyprint">@Model.TextFile</pre>
+        <script type="text/javascript">
+            $("pre.prettyprint").html(prettyPrintOne($("pre.prettyprint").html()));
+        </script>
+    }
+    else if (Model.ImageFile != null)
+    {
+        
+        <a class="genericBackground" alt="@Model.FileName" href="@Model.FileName">Download
+            as binary file</a><br />
+        <img class="genericBackground" alt="@Model.ImageFile" src="@Model.ImageFile" />
+        
+        
+    }
+    else if (Model.BinaryFile != null)
+    {
+        
+        <a class="genericBackground" alt="@Model.BinaryFile" href="@Model.BinaryFile">Download
+            as binary file</a>
+        
+    }
+    else
+    {
+        <ul>
+            @if (Model.Directories.Count > 0)
+            {
+                <li class="ulnopin">
+                    <h5>
+                        Directories:</h5>
+                    <ul id="directories">
+                        @foreach (var dir in Model.Directories)
+                        {
+                            <li><a class="opendir" href="javascript:void(0)" title="@dir.FullPath">@dir.Name</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+            @if (Model.Files.Count > 0)
+            {
+                <li class="ulnopin">
+                    <h5>
+                        Files:</h5>
+                    <ul id="files">
+                        @foreach (var dir in Model.Files)
+                        {
+                            <li><a class="openfile" href="javascript:void(0)" 
+                            fileName="@Path.GetFileName(dir.FullPath)"
+                            title="@Path.GetDirectoryName(dir.FullPath)">@dir.Name</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    }
+</div>
+<script type="text/javascript">
+
+    $(function () {
+
+
+
+        $('a.openfile').click(function () {
+            var url = encodeURI($(this).attr('title'));
+            var fileName = encodeURI($(this).attr('fileName'));
+            document.location.href = '/Browse/Index?project=@Model.Project&path=' + url + '&file=' + fileName;
+        });
+
+        $('a.opendir').click(function () {
+            var url = encodeURI($(this).attr('title'));
+            document.location.href = '/Browse/Index?project=@Model.Project&path=' + url;
+        });
+
+        $('a.openproject').click(function () {
+            var url = encodeURI($(this).attr('title'));
+            document.location.href = '/Browse/Index?project=@Model.Project';
+        });
+
+    });
+</script>
